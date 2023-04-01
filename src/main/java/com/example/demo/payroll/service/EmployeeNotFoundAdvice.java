@@ -1,4 +1,4 @@
-package com.example.demo.payroll.controllers;
+package com.example.demo.payroll.service;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

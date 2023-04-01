@@ -1,4 +1,4 @@
-package com.example.demo.payroll.controllers;
+package com.example.demo.payroll.controller;
 
 import java.util.List;
 
@@ -12,15 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.example.demo.payroll.models.Employee;
-import com.example.demo.payroll.EmployeeRepository;
-import com.example.demo.payroll.dao.EmployeeDao;
+import com.example.demo.payroll.entity.Employee;
+import com.example.demo.payroll.service.EmployeeService;
 
 @RestController
 class EmployeeController {
   
   @Autowired
-  private EmployeeDao employeeDao;
+  private EmployeeService employeeDao;
 
   // Aggregate root
   // tag::get-aggregate-root[]
@@ -46,9 +45,8 @@ class EmployeeController {
 
   @PutMapping("/employees/{id}")
   Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
-    
-    newEmployee.setId(id);
-    return employeeDao.updateEmployee(newEmployee);
+
+    return employeeDao.updateEmployee(newEmployee,id);
   }
 
   @DeleteMapping("/employees/{id}")

@@ -1,37 +1,26 @@
-package com.example.demo.payroll.models;
+package com.example.demo.payroll.entity;
 
 // import java.util.Objects;
 
 import jakarta.persistence.*;
-
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "employees")
-@ToString @EqualsAndHashCode
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Employee {
 
-  @Id 
-  @Getter @Setter @Column(name= "id")
-  @GeneratedValue
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   
-  @Getter @Setter @Column(name= "name")
   private String name;
-
-  @Getter @Setter @Column(name= "role")
   private String role;
-
-  public Employee() {}
-
-  public Employee(String name, String role) {
-
-    this.name = name;
-    this.role = role;
-  }
 
   // @Override
   // public boolean equals(Object o) {

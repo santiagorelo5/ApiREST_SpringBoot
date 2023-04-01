@@ -1,4 +1,4 @@
-package com.example.demo.payroll.controllers;
+package com.example.demo.payroll.service;
 
 class EmployeeNotFoundException extends RuntimeException {
 

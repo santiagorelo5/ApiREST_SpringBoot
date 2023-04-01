@@ -19,38 +19,37 @@ import com.example.demo.payroll.service.EmployeeService;
 class EmployeeController {
   
   @Autowired
-  private EmployeeService employeeDao;
+  private EmployeeService employeeService;
 
   // Aggregate root
   // tag::get-aggregate-root[]
-  @GetMapping("/employees")
+  @GetMapping("/api/employees")
   List<Employee> all() {
-    return employeeDao.all();
+    return employeeService.all();
   }
   // end::get-aggregate-root[]
 
-  @PostMapping("/employees")
+  @PostMapping("/api/employees")
   Employee newEmployee(@RequestBody Employee newEmployee) {
-    return employeeDao.createEmployee(newEmployee);
+    return employeeService.createEmployee(newEmployee);
   }
 
   // // Single item
   
-  @GetMapping("/employees/{id}")
+  @GetMapping("/api/employees/{id}")
   Employee one(@PathVariable Long id) {
     
-    return employeeDao.findById(id);
-      // .orElseThrow(() -> new EmployeeNotFoundException(id));
+    return employeeService.findById(id);
   }
 
-  @PutMapping("/employees/{id}")
+  @PutMapping("/api/employees/{id}")
   Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
 
-    return employeeDao.updateEmployee(newEmployee,id);
+    return employeeService.updateEmployee(newEmployee,id);
   }
 
-  @DeleteMapping("/employees/{id}")
+  @DeleteMapping("/api/employees/{id}")
   void deleteEmployee(@PathVariable Long id) {
-    employeeDao.deleteEmployee(id);
+    employeeService.deleteEmployee(id);
   }
 }

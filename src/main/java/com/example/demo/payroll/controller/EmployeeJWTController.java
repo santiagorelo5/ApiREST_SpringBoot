@@ -36,9 +36,9 @@ class EmployeeJWTController {
   ResponseEntity<Map<String, String>> createToken(@PathVariable Long id) {
 
     Employee employee = employeeService.findById(id);
-    Map<String, String> response = new HashMap<String, String>();
+    Map<String, String> response = new HashMap<>();
     response.put("token", jwtUtils.generateToken(employee));
-    return new ResponseEntity<Map<String, String>>(response, HttpStatus.OK);
+    return new ResponseEntity<>(response, HttpStatus.OK);
   }
 
   // Aggregate root
